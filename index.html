@@ -3,16 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Funciones JavaScript</title>
+    <meta name="description" content="Prueba funciones de JavaScript con datos propios en un panel interactivo.">
+    <title>Laboratorio de funciones | JavaScript</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="funciones.js" defer></script>
 </head>
 <body>
-    <main class="container">
-        <h1>Funciones JavaScript</h1>
-        <p>Ejemplos prácticos de funciones con resultados ejecutados en el navegador.</p>
-        <ul id="output"></ul>
-    </main>
+    <main class="app-shell">
+        <header class="hero">
+            <a class="brand" href="./" aria-label="Laboratorio de JavaScript, inicio">
+                <span class="brand-mark" aria-hidden="true">JS</span>
+                <span>Laboratorio <span class="brand-light">JavaScript</span></span>
+            </a>
+            <div class="hero-copy">
+                <p class="eyebrow">Funciones prácticas · Prueba en vivo</p>
+                <h1>Experimenta con JavaScript</h1>
+                <p class="hero-description">Elige una función, ingresa tus propios valores y observa el resultado al instante.</p>
+            </div>
+            <div class="hero-decoration" aria-hidden="true">{ }</div>
+        </header>
 
-    <script src="funciones.js"></script>
+        <section class="workspace" aria-label="Panel interactivo de funciones">
+            <div class="panel">
+                <div class="panel-heading">
+                    <div>
+                        <p class="eyebrow">Área de pruebas</p>
+                        <h2>Configura tu función</h2>
+                    </div>
+                    <span class="step-badge">01</span>
+                </div>
+
+                <form id="playground-form" novalidate>
+                    <div class="field">
+                        <label for="function-select">Función</label>
+                        <select id="function-select" name="function" required>
+                            <optgroup label="Números">
+                                <option value="sumar">Sumar</option>
+                                <option value="restar">Restar</option>
+                                <option value="multiplicar">Multiplicar</option>
+                                <option value="dividir">Dividir</option>
+                                <option value="potencia">Calcular potencia</option>
+                                <option value="factorial">Calcular factorial</option>
+                                <option value="esPrimo">Comprobar número primo</option>
+                                <option value="celsiusAFahrenheit">Convertir °C a °F</option>
+                                <option value="fahrenheitACelsius">Convertir °F a °C</option>
+                                <option value="doble">Calcular el doble</option>
+                                <option value="esPar">Comprobar si es par</option>
+                                <option value="esMayor">Comprobar mayoría de edad</option>
+                                <option value="aleatorio">Número aleatorio</option>
+                                <option value="calcularPromedio">Calcular promedio</option>
+                                <option value="valorMaximo">Encontrar valor máximo</option>
+                                <option value="valorMinimo">Encontrar valor mínimo</option>
+                                <option value="validarNumero">Validar número</option>
+                            </optgroup>
+                            <optgroup label="Texto">
+                                <option value="saludar">Saludar</option>
+                                <option value="despedirse">Despedirse</option>
+                                <option value="miNombre">Presentar nombre</option>
+                                <option value="contarLetras">Contar caracteres</option>
+                                <option value="contarPalabras">Contar palabras</option>
+                                <option value="mayusculas">Convertir a mayúsculas</option>
+                                <option value="minusculas">Convertir a minúsculas</option>
+                                <option value="invertirTexto">Invertir texto</option>
+                                <option value="esPalindromo">Comprobar palíndromo</option>
+                                <option value="repetir">Repetir texto</option>
+                                <option value="esVocal">Comprobar si es vocal</option>
+                                <option value="obtenerIniciales">Obtener iniciales</option>
+                            </optgroup>
+                            <optgroup label="Fecha">
+                                <option value="formatFecha">Formatear fecha</option>
+                            </optgroup>
+                        </select>
+                    </div>
+
+                    <div id="arguments" class="argument-grid"></div>
+                    <p id="form-error" class="form-error" role="alert" hidden></p>
+
+                    <button class="run-button" type="submit">
+                        <span aria-hidden="true">▶</span>
+                        Ejecutar función
+                    </button>
+                </form>
+
+                <p class="panel-hint">Consejo: separa los números de una lista con comas, por ejemplo: <code>8, 9, 10</code>.</p>
+            </div>
+
+            <section class="result-panel" aria-labelledby="result-title">
+                <div class="panel-heading">
+                    <div>
+                        <p class="eyebrow">Salida</p>
+                        <h2 id="result-title">Resultado</h2>
+                    </div>
+                    <span class="step-badge step-badge-accent">02</span>
+                </div>
+                <output id="result" class="result-box" aria-live="polite" aria-atomic="true">
+                    <span class="result-placeholder">Tu resultado aparecerá aquí cuando ejecutes una función.</span>
+                </output>
+                <div class="result-meta">
+                    <span id="result-function">Esperando una función</span>
+                    <span id="result-status" class="status-indicator">● Listo</span>
+                </div>
+            </section>
+        </section>
+
+        <section class="history-panel" aria-labelledby="history-title">
+            <div class="history-heading">
+                <div>
+                    <p class="eyebrow">Sesión actual</p>
+                    <h2 id="history-title">Historial de pruebas</h2>
+                </div>
+                <button id="clear-history" class="text-button" type="button" disabled>Limpiar historial</button>
+            </div>
+            <ol id="history" class="history-list" aria-live="polite">
+                <li class="history-empty">Todavía no has ejecutado ninguna función.</li>
+            </ol>
+        </section>
+
+        <footer class="footer">
+            <span>Laboratorio de funciones JavaScript</span>
+            <span>Hecho para aprender practicando</span>
+        </footer>
+    </main>
 </body>
 </html>
